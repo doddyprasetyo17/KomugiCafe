@@ -1,0 +1,204 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+
+:root {
+    --accent: rgb(216, 66, 73);
+    --accenthover: rgb(153, 47, 52);
+    --toggle:  rgb(245, 154, 36);
+    --dark: #304659;
+    --dark80: rgba(26, 38, 49, 0.6);
+    --dark60: rgba(48,70,89,.6);
+    --light: #F5F9FC;
+    --transition: all 0.3s ease 0s;
+    --transitionburger: all 0.8s ease 0s;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    font-family: "Lato", sans-serif;
+    overflow-x: hidden;
+}
+
+.banner {
+    margin-top: -100px;
+    background:
+        linear-gradient(
+            var(--dark60),
+            var(--dark60)
+        ),
+        url(assets/img/background.jpg);
+        position: relative;
+        width: 100%;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        z-index: 0;
+}
+
+a, .logo {
+    cursor:pointer;
+}
+
+/* navbar */
+nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100px;
+    z-index: 1;
+    position: relative;
+}
+
+nav ul{
+    display: flex;
+    list-style: none;
+    width: 40%;
+    justify-content: space-between;
+}
+
+nav ul li a {
+    font-family: "Lato", sans-serif;
+    color: var(--light);
+    text-decoration: none;
+}
+
+.links a {
+    font-size: 1em;
+    font-weight: 400;
+    transition: var(--transition);
+}
+
+
+.links a:hover {
+    color: var(--accent);
+}
+
+.banner .content {
+    max-width: 900px;
+    text-align: center;
+    z-index: 1;
+}
+
+.banner .content h2 {
+    font-size: 3em;
+    font-weight: 700;
+    color: var(--accent);
+    text-shadow: 1px 1px 1px black;
+}
+
+.banner .content p{
+    color: var(--light);
+    font-size: 1em;
+    text-shadow: 1px 1px 1px black;
+}
+
+
+
+
+/* MENU HUMBERGUR */
+
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    height: 20px;
+    justify-content: space-between;
+    position: relative;
+}
+
+.menu-toggle input{
+    position: absolute;
+    width: 40px;
+    height: 28px;
+    left: -8px;
+    top: -5px;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.menu-toggle span{
+    display: block;
+    width: 28px;
+    height: 3px;
+    background-color: white;
+    border-radius: 3px;
+    transition: var(--transitionburger);
+}
+/* end Hamburger */
+
+/* ANIMASI BUAT HUMBERGER */
+.menu-toggle span:nth-child(2){
+    transform-origin: 0 0;
+}
+
+.menu-toggle span:nth-child(4){
+    transform-origin: 0 100%;
+}
+
+.menu-toggle input:checked ~ span:nth-child(2){
+    background-color: var(--accent);
+    transform:rotate(45deg) translate(-1px, -1px);
+}
+
+.menu-toggle input:checked ~ span:nth-child(4){
+    background-color: var(--accent);
+    transform:rotate(-45deg) translate(-1px, 0);
+}
+
+.menu-toggle input:checked ~ span:nth-child(3) {
+    opacity: 0;
+    transform: scale(0);
+}
+
+/* end ANIMASI */
+
+
+
+
+/* Responsive Breakpoint */
+/* Ukuran Tablet */
+@media screen and (max-width: 768px){
+    nav ul {
+        width: 50%;
+    }
+}
+
+@media screen and (max-width: 567px){
+    .menu-toggle{
+        display: flex;
+    }
+
+    nav ul {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 40%;
+        height: 100vh;
+        justify-content: space-evenly;
+        flex-direction: column;
+        align-items: center;
+        background-color: var(--dark80);
+        z-index: 0;
+        transform: translateX(100%);
+        transition: var(--transitionburger);
+        opacity: 0;
+    }
+
+    nav ul.slide {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+
+/* akhir */
+
+
