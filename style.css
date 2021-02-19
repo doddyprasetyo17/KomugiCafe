@@ -1,12 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&display=swap');
 
 :root {
     --accent: rgb(216, 66, 73);
     --accenthover: rgb(153, 47, 52);
     --toggle:  rgb(245, 154, 36);
+    --backcolor: rgba(221, 233, 243, 0.6);
     --dark: #304659;
     --dark80: rgba(26, 38, 49, 0.6);
     --dark60: rgba(48,70,89,.6);
+    --blue: rgba(81, 108, 133, 0.6);
+    --red: #ff0157;
     --light: #F5F9FC;
     --transition: all 0.3s ease 0s;
     --transitionburger: all 0.8s ease 0s;
@@ -16,15 +20,16 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    scroll-behavior: smooth;
 }
 
 html, body {
     font-family: "Lato", sans-serif;
     overflow-x: hidden;
+    background-color: var(--backcolor);
 }
 
 .banner {
-    margin-top: -100px;
     background:
         linear-gradient(
             var(--dark60),
@@ -33,7 +38,7 @@ html, body {
         url(assets/img/background.jpg);
         position: relative;
         width: 100%;
-        min-height: 100vh;
+        height: 100vh;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -47,14 +52,36 @@ a, .logo {
     cursor:pointer;
 }
 
-/* navbar */
+/* Navbar */
 nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 40px 100px;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
-    height: 100px;
-    z-index: 1;
+    z-index: 2;
+    transition: var(--transitionburger);
+}
+
+nav.sticky {
+    background-color: var(--blue);
+    padding: 20px 100px;
+}
+
+nav .logo {
     position: relative;
+    height: 20px;
+}
+
+nav.sticky .logo img{
+    margin-top: -17px;
+}
+
+nav .logo img{
+    width: 120px;
 }
 
 nav ul{
@@ -70,17 +97,22 @@ nav ul li a {
     text-decoration: none;
 }
 
+nav.sticky ul li a {
+    color: #fff;
+}
+
 .links a {
     font-size: 1em;
     font-weight: 400;
     transition: var(--transition);
 }
 
-
 .links a:hover {
     color: var(--accent);
 }
+/* End Navbar */
 
+/* Banner */
 .banner .content {
     max-width: 900px;
     text-align: center;
@@ -100,8 +132,124 @@ nav ul li a {
     text-shadow: 1px 1px 1px black;
 }
 
+.btn {
+    font-size: 1em;
+    color: #ffffff;
+    background: var(--accent);
+    display: inline-block;
+    padding: 10px 30px;
+    margin-top: 20px;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 2px;
+    transition: var(--transitionburger);
+    cursor: pointer;
+}
 
+.btn:hover {
+    letter-spacing: 6px;
+    background: var(--accenthover);
+}
+/* End Banner */
 
+/* About */
+
+section {
+    padding: 100px;
+}
+
+.row {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.row .col50 {
+    position: relative;
+    width: 48%;
+}
+
+h2.tittleText {
+    color: var(--blue);
+    font-size: 2em;
+    font-weight: 300;
+}
+
+h2.tittleText span {
+    color: var(--red);
+    font-weight: 700;
+    font-size: 1.5em;
+}
+
+.row .col50 .imgBx {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    /* min-height: 200px; */
+}
+
+.row .col50 .imgBx img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* End Section About */
+
+/* Section Menu*/
+.tittle {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.menu .content {
+    display: flex;
+    justify-content: center;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+
+.menu .content .box {
+    width: 340px;
+    margin: 20px;
+    border: 15px solid var(--light);
+    box-shadow: 0 5px 35px rgba(37, 35, 35, 0.08);
+}
+
+.menu .content .imgBx {
+    position: relative;
+    width: 100%;
+    height: 300px;
+}
+
+.menu .content .imgBx img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.menu .content .box .text {
+    padding: 15px 0 5px;
+}
+
+.menu .content .box .text h3 {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    color: var(--dark);
+}
+
+/* End Section Menu */
 
 /* MENU HUMBERGUR */
 
@@ -161,13 +309,11 @@ nav ul li a {
 /* end ANIMASI */
 
 
-
-
 /* Responsive Breakpoint */
 /* Ukuran Tablet */
 @media screen and (max-width: 768px){
     nav ul {
-        width: 50%;
+        width: 60%;
     }
 }
 
@@ -200,5 +346,3 @@ nav ul li a {
 
 
 /* akhir */
-
-
